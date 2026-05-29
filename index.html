@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="id" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mayla Safana Nabila | Portfolio</title>
+
+    <meta name="description" content="Portfolio of Mayla Safana Nabila - Frontend Developer & UI/UX Designer">
+    
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS (Gunakan CDN untuk preview, gunakan Vite untuk production) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        primary: '#3b82f6', // Modern Blue
+                        darkbg: '#0a0a0a',  // Deep Vercel Black
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Styles & Animations */
+        body { font-family: 'Inter', sans-serif; }
+        
+        /* Custom Cursor */
+        .cursor-dot, .cursor-outline {
+            position: fixed;
+            top: 0; left: 0;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            z-index: 9999;
+            pointer-events: none;
+        }
+        .cursor-dot { width: 8px; height: 8px; background-color: #3b82f6; }
+        .cursor-outline { width: 40px; height: 40px; border: 2px solid rgba(59, 130, 246, 0.5); transition: width 0.2s, height 0.2s; }
+        
+        /* Reveal Animation */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* Glassmorphism */
+        .glass { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .dark .glass { background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(255, 255, 255, 0.05); }
+
+        /* Gradient Text */
+        .text-gradient { background: linear-gradient(to right, #60a5fa, #c084fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-darkbg text-slate-800 dark:text-slate-200 transition-colors duration-300 antialiased selection:bg-primary selection:text-white relative">
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot hidden md:block"></div>
+    <div class="cursor-outline hidden md:block"></div>
+
+    <!-- Background Glow Effect (Linear style) -->
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-blue-500/20 rounded-full blur-[120px] pointer-events-none"></div>
+
+    <!-- Navbar Sticky -->
+    <nav class="fixed w-full z-50 transition-all duration-300" id="navbar">
+        <div class="max-w-6xl mx-auto px-6 py-4">
+            <div class="glass rounded-2xl px-6 py-3 flex justify-between items-center">
+                <a href="#" class="text-xl font-bold tracking-tighter">Mayla<span class="text-primary">.</span></a>
+                <div class="hidden md:flex space-x-8 items-center text-sm font-medium">
+                    <a href="#about" class="hover:text-primary transition">About</a>
+                    <a href="#skills" class="hover:text-primary transition">Skills</a>
+                    <a href="#experience" class="hover:text-primary transition">Experience</a>
+                    <a href="#projects" class="hover:text-primary transition">Projects</a>
+                </div>
+                <div class="flex items-center gap-4">
+                    <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-white/10 transition">
+                        <i data-lucide="moon" class="w-5 h-5 dark:hidden"></i>
+                        <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+                    </button>
+                    <a href="#contact" class="hidden md:block px-5 py-2 bg-primary hover:bg-blue-600 text-white rounded-full text-sm font-medium transition shadow-[0_0_15px_rgba(59,130,246,0.5)]">Let's Talk</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- HERO SECTION -->
+        <section id="hero" class="min-h-screen flex items-center justify-center pt-20 px-6 relative">
+            <div class="max-w-4xl mx-auto text-center reveal">
+                <!-- Profile Image -->
+                <div class="relative w-32 h-32 mx-auto mb-8">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-blue-500 to-purple-500 rounded-full blur-lg opacity-50"></div>
+                    <img src="profile-pict.jpg" alt="Mayla Safana Nabila" class="relative rounded-full w-full h-full object-cover border-2 border-white/20">
+                </div>
+                
+                <h2 class="text-sm md:text-base font-semibold tracking-widest uppercase text-gray-500 dark:text-gray-400 mb-4">Hi, I am</h2>
+                <h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-6 leading-tight">
+                    Mayla Safana Nabila<br>
+                    <span class="text-gradient">Frontend & UI/UX Developer</span>
+                </h1>
+                <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+                    Building digital interfaces that are not only functional, but also deliver a stunning visual experience.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="https://drive.google.com/file/d/1H5fi7H5i16Af6JGfSFqXKJB2hMVoNyrf/view?usp=sharing" class="px-8 py-4 bg-primary hover:bg-blue-600 text-white rounded-full font-medium transition shadow-lg shadow-blue-500/30 flex items-center justify-center gap-2">
+                        CV Overview  <i data-lucide="file-user" class="w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT & SKILLS SECTION -->
+        <section id="about" class="py-24 px-6 bg-white dark:bg-[#0f0f0f]">
+            <div class="max-w-6xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-16 items-center">
+                    <div class="reveal">
+                        <h3 class="text-3xl font-bold mb-6">Turning ideas into <span class="text-primary">visual reality.</span></h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
+                            I am a fresh graduate with a Bachelor’s degree in Information Technology (cum laude) from Telkom University, with a strong interest in web and mobile application development, particularly as a Front-End Developer and UI/UX Designer. I am passionate about building responsive, user-friendly, and intuitive digital experiences that enhance user satisfaction.</p>
+                        <div class="grid grid-cols-2 gap-6 mt-8">
+                            <div class="glass p-6 rounded-2xl">
+                                <h4 class="text-4xl font-bold text-primary mb-2">Fresh Graduate</h4>
+                                <p class="text-sm text-gray-500">Less Than 1 Year Experience</p>
+                            </div>
+                            <div class="glass p-6 rounded-2xl">
+                                <h4 class="text-4xl font-bold text-primary mb-2">3.88 GPA</h4>
+                                <p class="text-sm text-gray-500">Telkom University</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- SKILLS -->
+                    <div id="skills" class="reveal">
+                        <h3 class="text-xl font-semibold mb-6">Tech Stack & Tools</h3>
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                            <!-- Skill Cards -->
+                            <div class="glass p-4 rounded-xl flex flex-col items-center gap-3 hover:-translate-y-1 transition duration-300">
+                                <div class="flex gap-2">
+                                    <img src="https://cdn.simpleicons.org/html5" alt="HTML5 Logo" class="w-7 h-7">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3 Logo" class="w-7 h-7">
+                                </div>
+                                <span class="text-sm font-medium">HTML & CSS</span>
+                            </div>
+                            <div class="glass p-4 rounded-xl flex flex-col items-center gap-3 hover:-translate-y-1 transition duration-300">
+                                <img src="https://cdn.simpleicons.org/javascript" alt="JavaScript Logo" class="w-8 h-8 rounded-sm">
+                                <span class="text-sm font-medium">JavaScript</span>
+                            </div>
+                            <div class="glass p-4 rounded-xl flex flex-col items-center gap-3 hover:-translate-y-1 transition duration-300">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma Logo" class="w-8 h-8">
+                                <span class="text-sm font-medium">Figma</span>
+                            </div>
+                            <div class="glass p-4 rounded-xl flex flex-col items-center gap-3 hover:-translate-y-1 transition duration-300">
+                                <img src="https://cdn.simpleicons.org/laravel" alt="Laravel Logo" class="w-8 h-8">
+                                <span class="text-sm font-medium">Laravel</span>
+                            </div>
+                            <div class="glass p-4 rounded-xl flex flex-col items-center gap-3 hover:-translate-y-1 transition duration-300">
+                                <i data-lucide="layers" class="w-8 h-8 text-purple-500"></i>
+                                <span class="text-sm font-medium">UI/UX Design</span>
+                            </div>
+                            <div class="glass p-4 rounded-xl flex flex-col items-center gap-3 hover:-translate-y-1 transition duration-300">
+                                <i data-lucide="tablet-smartphone" class="w-8 h-8 text-sky-400"></i>
+                                <span class="text-sm font-medium">Mobile & Website Design</span>
+                            </div>
+                            <div class="glass p-4 rounded-xl flex flex-col items-center gap-3 hover:-translate-y-1 transition duration-300">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VS Code Logo" class="w-8 h-8">
+                                <span class="text-sm font-medium">VS Code</span>
+                            </div>
+                             <div class="glass p-4 rounded-xl flex flex-col items-center gap-3 hover:-translate-y-1 transition duration-300">
+                                <i data-lucide="layout-panel-left" class="w-8 h-8 text-sky-400"></i>
+                                <span class="text-sm font-medium">Wireframing</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EXPERIENCE TIMELINE -->
+        <section id="experience" class="py-24 px-6 relative">
+            <div class="max-w-4xl mx-auto reveal">
+                <h3 class="text-3xl font-bold mb-12 text-center">Work <span class="text-primary">Experience</span></h3>
+                
+                <div class="max-w-3xl mx-auto relative">
+                    
+                    <div class="relative pl-12 group">
+                        <span class="absolute left-0 top-1.5 flex h-7 w-7 items-center justify-center rounded-full bg-primary/10 border border-primary text-primary transition duration-300 group-hover:scale-110 shadow-[0_0_15px_rgba(59,130,246,0.3)]">
+                            <i data-lucide="briefcase" class="w-3.5 h-3.5"></i>
+                        </span>
+                        
+                        <div class="glass p-6 md:p-8 rounded-2xl hover:border-primary/50 transition duration-300 shadow-sm">
+                            <h4 class="text-xl md:text-2xl font-bold">Frontend Developer Intern</h4>
+                            <p class="text-primary text-sm font-medium mb-4">PT Fasya Pratama Solusindo • Jul 2025 - Sep 2025</p>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm md:text-base leading-relaxed">
+                                Developing a web-based employee attendance system interface that integrates with mobile devices, including attendance recording features, attendance data display, and user input validation.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>        
+        </section>
+
+        <!-- PROJECTS SECTION -->
+        <section id="projects" class="py-24 px-6 bg-white dark:bg-[#0f0f0f]">
+            <div class="max-w-6xl mx-auto reveal">
+                <h3 class="text-3xl font-bold mb-12 text-center">Featured <span class="text-primary">Projects</span></h3>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Project Card 1 -->
+                    <div class="glass rounded-3xl overflow-hidden group">
+                        <div class="relative h-60 overflow-hidden bg-gray-200 dark:bg-gray-800">
+                            <!-- Placeholder Image -->
+                             <img src="dashboard.png" alt="Backoffice Preview" class="w-full h-full object-cover object-top transition duration-500 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-t from-darkbg to-transparent opacity-0 group-hover:opacity-60 transition duration-300"></div>
+                        </div>
+                        <div class="p-8">
+                            <div class="flex gap-2 mb-4">
+                                <span class="text-xs font-semibold px-3 py-1 bg-purple-500/10 text-purple-400 rounded-full">Laravel</span>
+                                <span class="text-xs font-semibold px-3 py-1 bg-blue-500/10 text-blue-400 rounded-full">Tailwind</span>
+                            </div>
+                            <h4 class="text-2xl font-bold mb-3">Internship Project: Backoffice</h4>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm mb-6">Developed a back-office management website integrated with a mobile attendance system.</p>
+                            <div class="flex gap-4">
+                                <a href="fasya-details.html" class="flex items-center gap-2 text-sm font-semibold hover:text-primary transition"><i data-lucide="book-open" class="w-4 h-4"></i> Details  </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 2 -->
+                    <div class="glass rounded-3xl overflow-hidden group">
+                        <div class="relative h-60 overflow-hidden bg-gray-200 dark:bg-gray-800">
+                            <!-- Placeholder Image -->
+                            <img src="seraphine-preview.png" alt="Seraphine Patisserie Preview" class="w-full h-full object-cover object-top transition duration-500 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-t from-darkbg to-transparent opacity-0 group-hover:opacity-60 transition duration-300"></div>
+                        </div>
+                        <div class="p-8">
+                            <div class="flex gap-2 mb-4">
+                                <span class="text-xs font-semibold px-3 py-1 bg-purple-500/10 text-purple-400 rounded-full">Laravel </span>
+                            </div>
+                            <h4 class="text-2xl font-bold mb-3">Seraphine Patisserie</h4>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm mb-6">Bakery website, built using the following programming languages: HTML+CSS, JavaScript, PHP, and the Laravel framework.</p>
+                            <div class="flex gap-4">
+                                <a href="https://maylasafana.github.io/website-1/" class="flex items-center gap-2 text-sm font-semibold hover:text-primary transition"><i data-lucide="square-mouse-pointer" class="w-4 h-4"></i> Preview </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 3 -->
+                    <div class="glass rounded-3xl overflow-hidden group">
+                        <div class="relative h-60 overflow-hidden bg-gray-200 dark:bg-gray-800">
+                            <!-- Placeholder Image -->
+                            <img src="medease.png" alt="MedEase Preview" class="w-full h-full object-cover object-top transition duration-500 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-t from-darkbg to-transparent opacity-0 group-hover:opacity-60 transition duration-300"></div>
+                        </div>
+                        <div class="p-8">
+                            <div class="flex gap-2 mb-4">
+                                <span class="text-xs font-semibold px-3 py-1 bg-cyan-500/10 text-cyan-400 rounded-full">Figma</span>                      
+                            </div>
+                            <h4 class="text-2xl font-bold mb-3">MedEase</h4>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm mb-6">Designed the UI/UX concept for a planned healthcare mobile application. The application concept includes online consultation features through chat, voice call, and video call, along with chat review.</p>
+                            <div class="flex gap-4">
+                                
+                                <a href="https://www.figma.com/design/W4lUTmPdIcHH3zSJLX4DyO/MedEase?node-id=0-1&t=q5tHmI8NZeBBi8jm-1" class="flex items-center gap-2 text-sm font-semibold hover:text-primary transition"><i data-lucide="square-mouse-pointer" class="w-4 h-4"></i> Figma </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 4 -->
+                    <div class="glass rounded-3xl overflow-hidden group">
+                        <div class="relative h-60 overflow-hidden bg-gray-200 dark:bg-gray-800">
+                            <!-- Placeholder Image -->
+                            <img src="fasum-care.png" alt="FasUm Care Preview"class="w-full h-full object-cover object-top transition duration-500 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-t from-darkbg to-transparent opacity-0 group-hover:opacity-60 transition duration-300"></div>
+                        </div>
+                        <div class="p-8">
+                            <div class="flex gap-2 mb-4">
+                                <span class="text-xs font-semibold px-3 py-1 bg-cyan-500/10 text-cyan-400 rounded-full">Figma</span>
+                            </div>
+                            <h4 class="text-2xl font-bold mb-3">Mobile Design: FasUm Care</h4>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm mb-6">Designed the UI/UX concept for a planned mobile application that allows users to report damages to public facilities such as roads, street lights, sidewalks, and other infrastructure.</p>
+                            <div class="flex gap-4">
+                                <a href="https://www.figma.com/proto/dSaPzMBKNCI9VOxxx9mGUi/FasUm-Care-Apps-Design?node-id=582-2023&p=f&viewport=-2656%2C698%2C0.14&t=cdPDJnjLo75qQvPV-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1" class="flex items-center gap-2 text-sm font-semibold hover:text-primary transition"><i data-lucide="square-mouse-pointer" class="w-4 h-4"></i> Figma </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 4 -->
+                    <div class="glass rounded-3xl overflow-hidden group">
+                        <div class="relative h-60 overflow-hidden bg-gray-200 dark:bg-gray-800">
+                            <!-- Placeholder Image -->
+                            <img src="kubertelur.png" alt="KuBertelur Preview" class="w-full h-full object-cover object-top transition duration-500 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-t from-darkbg to-transparent opacity-0 group-hover:opacity-60 transition duration-300"></div>
+                        </div>
+                        <div class="p-8">
+                            <div class="flex gap-2 mb-4">
+                               <span class="text-xs font-semibold px-3 py-1 bg-cyan-500/10 text-cyan-400 rounded-full">Figma</span>
+                            </div>
+                            <h4 class="text-2xl font-bold mb-3">Website Design: Kubertelur</h4>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm mb-6">Designed the UI/UX concept for a planned UMKM-based web platform that connects fishermen directly with seafood buyers. The platform also includes a community feature where users can share information and discussions related to aquaculture, such as fish. The intellectual property (HAKI) for KuBertelur has been officially registered.</p>
+                            <div class="flex gap-4">
+                                <a href="https://www.figma.com/design/aDlrqo2je2MMzRwq2cIfrr/Projek-TI?node-id=0-1&t=A3LgA760Bwgoj6EP-1" class="flex items-center gap-2 text-sm font-semibold hover:text-primary transition"><i data-lucide="square-mouse-pointer" class="w-4 h-4"></i> Figma </a>
+                            </div>
+                        </div>
+                    </div> 
+                    
+                    <!-- Project Card 4 -->
+                    <div class="glass rounded-3xl overflow-hidden group">
+                        <div class="relative h-60 overflow-hidden bg-gray-200 dark:bg-gray-800">
+                            <!-- Placeholder Image -->
+                            <img src="other-project.png" alt="Other Project" class="w-full h-full object-cover object-top transition duration-500 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-t from-darkbg to-transparent opacity-0 group-hover:opacity-60 transition duration-300"></div>
+                        </div>
+                        <div class="p-8">
+                            <div class="flex gap-2 mb-4">
+                                <span class="text-xs font-semibold px-3 py-1 bg-yellow-500/10 text-yellow-400 rounded-full">Arduino IDE </span>
+                                
+                            </div>
+                            <h4 class="text-2xl font-bold mb-3">Other: IoT Projects</h4>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm mb-6">Participated in several IoT-based projects focused on smart monitoring systems and community-based technology solutions. In the Community Service Learning project (2023), developed an IoT system for monitoring pH levels, water temperature, and water levels in fish ponds to support aquaculture management and improve monitoring efficiency. Additionally, contributed to the Innovillage project (2023) by developing “TemanSapi,” an IoT-based cattle health monitoring system designed to assist in tracking livestock conditions through real-time monitoring technology.</p>
+                            <div class="flex gap-4">
+                                <a href="https://drive.google.com/file/d/12K1Iqj2z5UEAh_6PCZMRqES5fKyv7Od0/view?usp=sharing" class="flex items-center gap-2 text-sm font-semibold hover:text-primary transition"><i data-lucide="external-link" class="w-4 h-4"></i> Project Overview </a>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section id="contact" class="py-24 px-6 relative">
+            <div class="max-w-3xl mx-auto text-center reveal">
+                <div class="glass p-12 rounded-[3rem] relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-primary/20 rounded-full blur-[80px]"></div>
+                    <h3 class="text-4xl font-bold mb-6">Open To Work</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-10 max-w-xl mx-auto">I am open to job opportunities for Frontend Developer and UI/UX Designer roles. For further inquiries, please contact below:</p>
+                    
+                    <div class="flex flex-col sm:flex-row justify-center gap-4">
+                        <!-- Ganti nomor WhatsApp dengan format 628xxx -->
+                        <a href="https://wa.me/6285183395895" target="_blank" class="px-8 py-4 bg-[#25D366] hover:bg-[#1ebe57] text-white rounded-full font-medium transition flex items-center justify-center gap-3 shadow-lg shadow-green-500/20">
+                            <i data-lucide="message-circle" class="w-5 h-5"></i> WhatsApp Me
+                        </a>
+                        <a href="https://linkedin.com/in/mayla-safana-nabila/" target="_blank" class="px-8 py-4 bg-[#0A66C2] hover:bg-[#084e96] text-white rounded-full font-medium transition flex items-center justify-center gap-3 shadow-lg shadow-blue-500/20">
+                            <i data-lucide="circle-user" class="w-5 h-5"></i> LinkedIn Profile
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-gray-200 dark:border-white/10 py-8 text-center mt-12">
+        <p class="text-gray-500 text-sm">
+            © 2026 Mayla Safana Nabila.
+        </p>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Dark Mode Toggle Logic
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const htmlElement = document.documentElement;
+
+        // Check Local Storage or System Preference
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            htmlElement.classList.add('dark');
+        } else {
+            htmlElement.classList.remove('dark');
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            htmlElement.classList.toggle('dark');
+            if (htmlElement.classList.contains('dark')) {
+                localStorage.setItem('theme', 'dark');
+            } else {
+                localStorage.setItem('theme', 'light');
+            }
+        });
+
+        // Scroll Reveal Animation (Intersection Observer)
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealOptions = { threshold: 0.15, rootMargin: "0px 0px -50px 0px" };
+
+        const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add('active');
+                observer.unobserve(entry.target); // Animasi sekali jalan
+            });
+        }, revealOptions);
+
+        revealElements.forEach(el => revealOnScroll.observe(el));
+
+        // Custom Cursor Logic (Hanya berjalan di Desktop)
+        const cursorDot = document.querySelector('.cursor-dot');
+        const cursorOutline = document.querySelector('.cursor-outline');
+
+        window.addEventListener('mousemove', (e) => {
+            const posX = e.clientX;
+            const posY = e.clientY;
+            
+            cursorDot.style.left = `${posX}px`;
+            cursorDot.style.top = `${posY}px`;
+            
+            // Effect delay (smooth tracking) untuk outline
+            cursorOutline.animate({
+                left: `${posX}px`,
+                top: `${posY}px`
+            }, { duration: 500, fill: "forwards" });
+        });
+
+        // Hover Effect on Cursor for links and buttons
+        const hoverElements = document.querySelectorAll('a, button');
+        hoverElements.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursorOutline.style.width = '60px';
+                cursorOutline.style.height = '60px';
+                cursorOutline.style.backgroundColor = 'rgba(59, 130, 246, 0.1)';
+            });
+            el.addEventListener('mouseleave', () => {
+                cursorOutline.style.width = '40px';
+                cursorOutline.style.height = '40px';
+                cursorOutline.style.backgroundColor = 'transparent';
+            });
+        });
+    </script>
+</body>
+</html>
